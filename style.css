@@ -1,0 +1,256 @@
+:root{
+    --bright-orange: hsl(31, 77%, 52%);
+    --dark-cyan: hsl(184, 100%, 22%);
+    --very-dark-cyan: hsl(179, 100%, 13%);
+    --white-paragraphs: hsla(0, 0%, 100%, 0.75);
+    --light-gray-background-headings-buttons: hsl(0, 0%, 95%);
+    --ff-400:'Lexend Deca', sans-serif;
+    --ff-700:'Big Shoulders Display', cursive;
+    --fw-700:700;
+    --fw-400:400;
+    --fs:1rem;
+    --fs-heading: 2.5rem;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+body{
+    font-family: var(--ff-400);
+    font-size: var(--fs);
+    font-weight: var(--fw-400);
+    background-color: var(--light-gray-background-headings-buttons);
+}
+/*Styling Navigation bar*/
+nav{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    line-height: 3.2rem;
+    background-color: var(--dark-cyan);
+}
+.checkbtn{
+    display: none;
+    order: 3;
+    color: var(--white-paragraphs);
+}
+#check{
+    display: none;
+}
+.fa{
+    
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--light-gray-background-headings-buttons);
+
+}
+.image-container{
+order: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.image-container img{
+margin-right: 1rem;
+}
+.image-container label{
+    color: var(--light-gray-background-headings-buttons);
+}
+ul{
+   
+order: 2;
+display: flex;
+gap: 1.5rem;
+
+}
+ul li a{
+   
+    text-transform: uppercase;
+    color: var(--light-gray-background-headings-buttons);
+}
+ul li a:hover{
+    color: var(--bright-orange);
+}
+.image-container:hover{
+    cursor: pointer;
+}
+.logo:hover{
+    cursor: pointer;
+    color: var(--bright-orange);
+}
+
+/* Styling the 3 column preview card component*/
+
+.cars-container{
+    min-height: 90vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;  
+}
+.cars-wrapper{
+    width: 69%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.circle{
+    max-width: 45px;
+    min-height: 45px;
+    border-radius: 50%;
+    opacity: 0.5;
+    background-color: black;
+}
+h1, p{
+    padding: 0 3rem;
+}
+button, .circle{
+    margin: 3rem;
+}
+ h1{
+    text-transform: uppercase;
+    padding-bottom: 2rem;
+    font-family: var(--ff-700);
+    font-size: var(--fs-heading);
+    font-weight: var(--fw-700);
+    color: var(--light-gray-background-headings-buttons);
+ }
+ p{
+    padding-bottom: 3rem;
+    font-family: var(--ff-400);
+    font-size: var(--fs);
+    font-weight: var(--fw-400);
+    line-height: 1.7;
+    letter-spacing: .14rem;
+    color: var(--white-paragraphs);
+ }
+
+.sedans{  
+   
+    
+    background-color: var(--bright-orange);
+    border-top-left-radius: .8rem;
+    border-bottom-left-radius: .8rem;
+}
+.sedans button a{
+    color: var(--bright-orange);
+}
+.sedans button:hover a{
+    color: var(--white-paragraphs);
+    
+}
+.sedans button:hover{
+    background-color: var(--bright-orange);
+}
+.suvs{
+   
+    
+    background-color: var(--dark-cyan);
+}
+.suvs button a{
+    color: var(--dark-cyan);
+}
+.suvs button:hover a{
+    color: var(--white-paragraphs);
+}
+.suvs button:hover{
+    background-color: var(--dark-cyan);
+}
+.luxury{
+    
+    
+    border-top-right-radius: .8rem;
+    border-bottom-right-radius: .8rem;
+    background-color: var(--very-dark-cyan);
+}
+.luxury button a{
+    color: var(--very-dark-cyan);
+}
+.luxury button:hover a{
+    color: var(--white-paragraphs);
+}
+.luxury button:hover{
+    background-color: var(--very-dark-cyan);
+}
+button{
+    outline: none;
+    border: none;
+    font-family: var(--ff-400);
+    font-size: var(--fs);
+    font-weight: var(--fw-400);
+    
+    padding: 1rem;
+    border-radius: 8rem;
+    width: 150px;
+    background-color: var(--light-gray-background-headings-buttons);
+}
+button:hover {
+    cursor: pointer;
+    border: 2px solid var(--white-paragraphs);
+    
+}
+
+
+
+@media(max-width: 40em){
+    .checkbtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+    .checkbtn:hover .fa{
+        cursor: pointer;
+        color: var(--bright-orange);
+    }
+    ul{
+        
+        position: absolute;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: .5rem;
+        top: 51px;
+        left: 0;
+        width: 100%;
+        transition: .5s ease-in-out;
+        transform: scaleX(0);
+        background-color: var(--dark-cyan);
+        z-index: 1;
+    }
+    #check:checked ~ ul{
+        
+        transform: scaleX(1);
+    }
+    ul li a:hover{
+        color: var(--bright-orange);
+    }
+    
+    /* Mobile Layout Styling for the 3 column preview card component*/
+    .cars-wrapper{
+        
+        flex-direction: column;
+    }
+    .sedans{  
+   
+    
+        margin-top: 5rem;
+        border-top-left-radius: .8rem;
+        border-top-right-radius: .8rem;
+        border-bottom-left-radius: 0;
+    }
+    .luxury{
+        margin-bottom: 5rem;
+        border-bottom-left-radius: .8rem;
+        border-bottom-right-radius: .8rem;
+        border-top-right-radius: 0;
+    }
+    
+}
+
