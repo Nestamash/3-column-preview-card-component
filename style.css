@@ -18,6 +18,9 @@
     text-decoration: none;
     list-style: none;
 }
+*::after, *::before{
+    box-sizing: border-box;
+}
 body{
     font-family: var(--ff-400);
     font-size: var(--fs);
@@ -41,12 +44,10 @@ nav{
 #check{
     display: none;
 }
-.fa{
-    
+.fa{ 
     font-size: 30px;
     font-weight: 700;
     color: var(--light-gray-background-headings-buttons);
-
 }
 .image-container{
 order: 1;
@@ -61,14 +62,12 @@ margin-right: 1rem;
     color: var(--light-gray-background-headings-buttons);
 }
 ul{
-   
-order: 2;
-display: flex;
-gap: 1.5rem;
+    order: 2;
+    display: flex;
+    gap: 1.5rem;
 
 }
 ul li a{
-   
     text-transform: uppercase;
     color: var(--light-gray-background-headings-buttons);
 }
@@ -82,6 +81,29 @@ ul li a:hover{
     cursor: pointer;
     color: var(--bright-orange);
 }
+/* animation line for nav links hover*/
+ul li{
+    position: relative;
+}
+ul li a::before, ul li a::after{
+    content: "";
+    width: 0;
+    height: 2px;
+    position: absolute;
+    background-color: var(--bright-orange);
+    transition: .5s ease-in-out;
+}
+ul li a::before{
+    top: 0; 
+}
+ul li a::after{
+    bottom: 0;
+    left: 0;  
+}
+ul li a:hover::before, ul li a:hover::after{
+    width: 100%;
+}
+
 
 /* Styling the 3 column preview card component*/
 
@@ -91,10 +113,10 @@ ul li a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1;  
+    flex-wrap: wrap; 
 }
 .cars-wrapper{
-    width: 69%;
+    max-width: 69%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -129,52 +151,42 @@ button, .circle{
     letter-spacing: .14rem;
     color: var(--white-paragraphs);
  }
+ .cars-wrapper > *{
+    flex: 1;
+ }
 
 .sedans{  
-   
-    
     background-color: var(--bright-orange);
     border-top-left-radius: .8rem;
     border-bottom-left-radius: .8rem;
 }
-.sedans button a{
+.sedans button {
     color: var(--bright-orange);
 }
-.sedans button:hover a{
+.sedans button:hover {
     color: var(--white-paragraphs);
-    
-}
-.sedans button:hover{
     background-color: var(--bright-orange);
 }
 .suvs{
-   
-    
     background-color: var(--dark-cyan);
 }
-.suvs button a{
+.suvs button{
     color: var(--dark-cyan);
 }
-.suvs button:hover a{
-    color: var(--white-paragraphs);
-}
 .suvs button:hover{
+    color: var(--white-paragraphs);
     background-color: var(--dark-cyan);
 }
 .luxury{
-    
-    
     border-top-right-radius: .8rem;
     border-bottom-right-radius: .8rem;
     background-color: var(--very-dark-cyan);
 }
-.luxury button a{
+.luxury button{
     color: var(--very-dark-cyan);
 }
-.luxury button:hover a{
-    color: var(--white-paragraphs);
-}
 .luxury button:hover{
+    color: var(--white-paragraphs);
     background-color: var(--very-dark-cyan);
 }
 button{
@@ -182,8 +194,7 @@ button{
     border: none;
     font-family: var(--ff-400);
     font-size: var(--fs);
-    font-weight: var(--fw-400);
-    
+    font-weight: var(--fw-400); 
     padding: 1rem;
     border-radius: 8rem;
     width: 150px;
@@ -191,26 +202,42 @@ button{
 }
 button:hover {
     cursor: pointer;
-    border: 2px solid var(--white-paragraphs);
-    
+    border: 2px solid var(--white-paragraphs); 
 }
 
-
-
+@media(max-width:1284px){
+    .cars-wrapper{
+        max-width: 100%;
+    }
+    @media(max-width:878px){
+        .cars-wrapper{
+            max-width: 50%;        
+            flex-direction: column;
+        }
+        .sedans{  
+            margin-top: 5rem;
+            border-top-left-radius: .8rem;
+            border-top-right-radius: .8rem;
+            border-bottom-left-radius: 0;
+        }
+        .luxury{
+            margin-bottom: 5rem;
+            border-bottom-left-radius: .8rem;
+            border-bottom-right-radius: .8rem;
+            border-top-right-radius: 0;
+        }
+}
 @media(max-width: 40em){
     .checkbtn{
         display: flex;
         justify-content: center;
-        align-items: center;
-        
+        align-items: center;  
     }
-    
     .checkbtn:hover .fa{
         cursor: pointer;
         color: var(--bright-orange);
     }
     ul{
-        
         position: absolute;
         flex-direction: column;
         justify-content: center;
@@ -224,33 +251,30 @@ button:hover {
         background-color: var(--dark-cyan);
         z-index: 1;
     }
-    #check:checked ~ ul{
-        
+    #check:checked ~ ul{  
         transform: scaleX(1);
     }
     ul li a:hover{
         color: var(--bright-orange);
     }
-    
+    /* Styling the hambuger to an X when its clicked*/
+    /* COMING SOON*/  
+        
     /* Mobile Layout Styling for the 3 column preview card component*/
     .cars-wrapper{
-        
+        max-width: 100%;
         flex-direction: column;
-    }
-    .sedans{  
-   
-    
-        margin-top: 5rem;
+        margin: 2rem;
+    }  
+    .sedans{   
         border-top-left-radius: .8rem;
         border-top-right-radius: .8rem;
         border-bottom-left-radius: 0;
     }
     .luxury{
-        margin-bottom: 5rem;
         border-bottom-left-radius: .8rem;
         border-bottom-right-radius: .8rem;
         border-top-right-radius: 0;
-    }
-    
-}
+    }  
+}}
 
