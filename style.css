@@ -40,15 +40,69 @@ nav{
     display: none;
     order: 3;
     color: var(--white-paragraphs);
+    position: relative;
 }
 #check{
     display: none;
 }
-.fa{ 
+/*.fa{ 
     font-size: 30px;
     font-weight: 700;
     color: var(--light-gray-background-headings-buttons);
+}*/
+
+/* Styling the hamburger menu*/
+.checkbtn .middle{
+    display: block;
+    height: 3px;
+    width: 30px;
+    background-color: var(--white-paragraphs);
+    transition: .6s ease-in-out;
 }
+.checkbtn .top{
+    display: block;
+    top: 10px;
+    height: 3px;
+    width: 30px;
+    position: absolute;
+    background-color: var(--bright-orange);
+    
+    transition: .5s ease-in-out;
+}
+.checkbtn .bottom{
+    display: block;
+    bottom: 10px;
+    height: 3px;
+    width: 30px;
+    position: absolute;
+    background-color: var(--bright-orange);
+    transition: .5s ease-in-out;
+}
+.checkbtn:hover{
+    cursor: pointer;
+}
+/*Styling the hamburger menu to make an X when the checkbox is checked*/
+#check:checked ~ .checkbtn .top{
+    transform: rotate(-45deg);  
+    width: 25px;
+    top: 0;
+    transition: transform .8s ease-in-out;
+}
+#check:checked ~ .checkbtn .bottom{
+    transform: rotate(45deg); 
+    width: 25px;
+    top: 0;
+    transition: transform .4s ease-in-out;
+}
+#check:checked ~ .checkbtn .middle{
+    transform: translateX(20px);
+    opacity: 0;
+    background-color: var(--white-paragraphs);
+    transition: transform .6s ease-in-out;
+    
+}
+
+
 .image-container{
 order: 1;
 display: flex;
@@ -211,17 +265,18 @@ button:hover {
     }
     @media(max-width:878px){
         .cars-wrapper{
-            max-width: 50%;        
+            max-width: 80%;        
             flex-direction: column;
+            margin: .5rem;
         }
         .sedans{  
-            margin-top: 5rem;
+           
             border-top-left-radius: .8rem;
             border-top-right-radius: .8rem;
             border-bottom-left-radius: 0;
         }
         .luxury{
-            margin-bottom: 5rem;
+            
             border-bottom-left-radius: .8rem;
             border-bottom-right-radius: .8rem;
             border-top-right-radius: 0;
@@ -264,7 +319,7 @@ button:hover {
     .cars-wrapper{
         max-width: 100%;
         flex-direction: column;
-        margin: 2rem;
+        margin: .5rem;
     }  
     .sedans{   
         border-top-left-radius: .8rem;
